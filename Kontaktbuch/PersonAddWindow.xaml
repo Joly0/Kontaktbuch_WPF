@@ -1,0 +1,32 @@
+﻿<Window x:Class="Kontaktbuch.PersonAddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kontaktbuch"
+        mc:Ignorable="d"
+        Title="Dateneingabe" Height="750" Width="300">
+    <Grid>
+        <Label Name="addPersonHeader" Content="Dateneingabe:" Margin="30,10,0,0" FontSize="20" FontFamily="Microsoft Sans Serif" TabIndex="9" />
+
+        <Label Name="vorNameLabel" Content="Vorname:" Margin="30,50,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="nachNameLabel" Content="Nachname:" Margin="30,120,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="straßeLabel" Content="Straße:" Margin="30,190,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="HausnummerLabel" Content="Hausnummer:" Margin="30,260,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="4" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="postleitzahlLabel" Content="Postleitzahl:" Margin="30,330,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="5" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="ortLabel" Content="Ort:" Margin="30,400,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="6" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="lieblingsLehrerLabel" Content="Lieblingslehrer:" Margin="30,470,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="7" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="lieblingsDinoLabel" Content="Lieblingsdino:" Margin="30,540,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="8" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+        <TextBox Name="vorNameText" Margin="30,75,0,0" TabIndex="9" Height="30" Width="200" FontSize="20" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" ></TextBox>
+        <TextBox Name="nachNameText" Margin="30,145,0,0" TabIndex="10" Height="30" Width="200" FontSize="20" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" ></TextBox>
+        <TextBox Name="straßeText" Margin="30,215,0,0" TabIndex="11" Height="30" Width="200" FontSize="20" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" ></TextBox>
+        <TextBox Name="hausnummerText" Margin="30,285,0,0" TabIndex="12" Height="30" Width="200" FontSize="20" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" ></TextBox>
+        <TextBox Name="postleitzahlText" Margin="30,355,0,0" TabIndex="13" Height="30" Width="200" FontSize="20" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" ></TextBox>
+        <TextBox Name="ortText" Margin="30,425,0,0" TabIndex="14" Height="30" Width="200" FontSize="20" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" ></TextBox>
+        <TextBox Name="lieblingsLehrerText" Margin="30,495,0,0" TabIndex="15" Height="30" Width="200" FontSize="20" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" ></TextBox>
+        <TextBox Name="lieblingsDinoText" Margin="30,565,0,0" TabIndex="16" Height="30" Width="200" FontSize="20" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" ></TextBox>
+
+        <Button Name="addPersonButton" Content="Hinzufügen" Grid.Column="1" TabIndex="17" Click="addPersonButton_Click" Width="150" Height="50" Margin="30,620,0,40" HorizontalAlignment="Left" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    </Grid>
+</Window>

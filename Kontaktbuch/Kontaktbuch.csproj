@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <PackageIcon>2gtO0j19432i2zqdShXFRep9lyWNW99x84J0GSDJM1kAAAAABJRU5ErkJggg==.png</PackageIcon>
+    <PackageIconUrl />
+    <ApplicationIcon>Resources\Kontaktbuch.ico</ApplicationIcon>
+	<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Kontaktbuch.db" />
+    <None Remove="search.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Kontaktbuch.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Resource Include="Resources\search.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  
+  <ItemGroup>
+	<TrimmerRootAssembly Include="System" />
+	<TrimmerRootAssembly Include="System.Xml.Linq" />
+    <TrimmerRootAssembly Include="System.Runtime" />
+	<TrimmerRootAssembly Include="System.Runtime.Extensions" />
+	<TrimmerRootAssembly Include="System.Diagnostics.Debug" />
+	<TrimmerRootAssembly Include="System.Reflection" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.90" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.114.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

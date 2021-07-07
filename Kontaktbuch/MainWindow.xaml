@@ -1,0 +1,40 @@
+﻿<Window x:Class="Kontaktbuch.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:Kontaktbuch"
+        mc:Ignorable="d"
+        Title="Kontaktbuch" Height="700">
+    <Grid>
+        <Label Name="listPeopleHeader" Content="Kontakte:" Margin="30,10,0,0" FontSize="20" FontFamily="Microsoft Sans Serif" TabIndex="10" />
+        <Image Source="pack://application:,,,/Resources/search.png" Width="30" Height="30" Margin="0,20,240,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <TextBox TabIndex="9" Height="30" Width="200" Margin="0,20,0,0" FontSize="20" TextWrapping="Wrap" Name="txtFilter" TextChanged="TxtFilter_TextChanged" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+
+        <ListView Name="personListView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="30,70,30,150"  SelectionMode="Extended" PreviewMouseLeftButtonUp="PersonListView_MouseLeftButtonDown" SelectionChanged="PersonListView_SelectionChanged"  SizeChanged="PersonListView_SizeChanged" Loaded="ListView_Loaded" MouseDoubleClick="PersonListView_MouseDoubleClick">
+            <ListView.Resources>
+                <Style TargetType="{x:Type GridViewColumnHeader}">
+                    <Setter Property="HorizontalContentAlignment" Value="Left" />
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView x:Name="personGridView">
+                    <GridView.Columns>
+                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Vorname" Width="Auto" DisplayMemberBinding="{Binding VorName}"/>
+                        <GridViewColumn Header="Nachname" Width="Auto" DisplayMemberBinding="{Binding NachName}"/>
+                        <GridViewColumn Header="Straße" Width="Auto" DisplayMemberBinding="{Binding Straße}"/>
+                        <GridViewColumn Header="Hausnummer" Width="Auto" DisplayMemberBinding="{Binding Hausnummer}"/>
+                        <GridViewColumn Header="Postleitzahl" Width="Auto" DisplayMemberBinding="{Binding Postleitzahl}"/>
+                        <GridViewColumn Header="Ort" Width="Auto" DisplayMemberBinding="{Binding Ort}"/>
+                        <GridViewColumn Header="Lieblingslehrer" Width="Auto" DisplayMemberBinding="{Binding LieblingsLehrer}"/>
+                        <GridViewColumn Header="Lieblingsdino" Width="Auto" DisplayMemberBinding="{Binding LieblingsDino}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Name="addPersonButton" Content="Hinzufügen" Grid.Column="1" TabIndex="17" Click="addPersonButton_Click" Width="150" Height="50" Margin="30,0,0,40" HorizontalAlignment="Left" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Name="PersonLöschen" Content="Löschen" Grid.Column="1" TabIndex="18" Click="PersonLöschen_Click" Width="150" Height="50" Margin="210,0,0,40" HorizontalAlignment="Left" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    </Grid>
+</Window>
