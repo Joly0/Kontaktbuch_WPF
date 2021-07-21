@@ -77,22 +77,38 @@ namespace Kontaktbuch
             }
         }
 
-        private bool UserFilter(object item)
+        private void TxtFilter_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (String.IsNullOrEmpty(txtFilter.Text))
+            List<PersonModel> filteredPeopleList = new();
+            personListView.ItemsSource = people;
+
+            if (!string.IsNullOrEmpty(txtFilter.Text))
             {
-                return true;
-            }
-            else
-            {
-                return (item as PersonModel).VorName.Contains(txtFilter.Text, StringComparison.OrdinalIgnoreCase);
+                foreach (PersonModel personModel in personListView.Items)
+                {
+                    if (personModel.VorName.Contains(txtFilter.Text, StringComparison.OrdinalIgnoreCase) ||
+                        personModel.NachName.Contains(txtFilter.Text, StringComparison.OrdinalIgnoreCase) ||
+                        personModel.Straße.Contains(txtFilter.Text, StringComparison.OrdinalIgnoreCase) ||
+                        personModel.Hausnummer.Contains(txtFilter.Text, StringComparison.OrdinalIgnoreCase) ||
+                        personModel.Postleitzahl.Contains(txtFilter.Text, StringComparison.OrdinalIgnoreCase) ||
+                        personModel.Ort.Contains(txtFilter.Text, StringComparison.OrdinalIgnoreCase) ||
+                        personModel.LieblingsLehrer.Contains(txtFilter.Text, StringComparison.OrdinalIgnoreCase) ||
+                        personModel.LieblingsDino.Contains(txtFilter.Text, StringComparison.OrdinalIgnoreCase))
+                    {
+                        filteredPeopleList = FilterPeople(personModel, filteredPeopleList);
+                    }
+                }
+                personListView.ItemsSource = filteredPeopleList;
             }
         }
 
-        private void TxtFilter_TextChanged(object sender, TextChangedEventArgs e)
+        private List<PersonModel> FilterPeople(PersonModel person, List<PersonModel> filteredPeopleList)
         {
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(personListView.ItemsSource);
-            view.Filter = UserFilter;
+            if (!filteredPeopleList.Contains(person))
+            {
+                filteredPeopleList.Add(person);
+            }
+            return filteredPeopleList;
         }
 
         private void PersonListView_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
