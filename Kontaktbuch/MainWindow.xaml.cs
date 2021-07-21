@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Kontaktbuch.Languages;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
+using WPFCustomMessageBox;
 
 namespace Kontaktbuch
 {
@@ -15,7 +18,13 @@ namespace Kontaktbuch
         private PersonModel currentSelectedPerson;
         public MainWindow()
         {
+            CultureInfo default_culture = new CultureInfo(CultureInfo.InstalledUICulture.TwoLetterISOLanguageName);
+            CultureResources.ChangeCulture(default_culture);
+
             InitializeComponent();
+
+            this.language_changer.SelectionChanged += new SelectionChangedEventHandler(this.language_changer_SelectionChanged);
+            language_changer.SelectedItem = default_culture;
         }
 
         private void ListView_Loaded(object sender, RoutedEventArgs e)
@@ -63,7 +72,7 @@ namespace Kontaktbuch
         {
             if (currentSelectedPerson != null)
             {
-                if (MessageBox.Show("Möchten sie die Einträge wirklich löschen?", "Bestätigung", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (CustomMessageBox.ShowYesNo(Languages.Language.DeleteConfirmation, Languages.Language.ConfirmationTitle, Languages.Language.Yes, Languages.Language.No, null, MessageBoxResult.Yes) == MessageBoxResult.Yes)
                 {
                     if (personListView != null)
                     {
@@ -147,6 +156,26 @@ namespace Kontaktbuch
                     personAddWindow.ShowDialog();
                     LoadPeopleList();
                 }
+            }
+        }
+
+        private void language_changer_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            System.Threading.Thread.CurrentThread.CurrentUICulture = language_changer.SelectedItem as CultureInfo;
+
+            CultureInfo selected_culture = language_changer.SelectedItem as CultureInfo;
+            //if not current language
+            //could check here whether the culture we want to change to is available in order to provide feedback / action
+            if (Languages.Language.Culture != null && !Languages.Language.Culture.Equals(selected_culture))
+            {
+                Debug.WriteLine(string.Format("Change Current Culture to [{0}]", selected_culture));
+
+                //save language in settings
+                //Properties.Settings.Default.CultureDefault = selected_culture;
+                //Properties.Settings.Default.Save();
+
+                //change resources to new culture
+                CultureResources.ChangeCulture(selected_culture);
             }
         }
     }

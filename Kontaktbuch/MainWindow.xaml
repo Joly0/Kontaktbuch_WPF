@@ -6,11 +6,20 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Kontaktbuch"
         mc:Ignorable="d"
-        Title="Kontaktbuch" Height="700">
+        Title="{Binding Path=MainTitle, Source={StaticResource Resources}}" Height="700" ResizeMode="CanResizeWithGrip" TextOptions.TextFormattingMode="Display" TextOptions.TextRenderingMode="ClearType">
+
+    <Window.Resources>
+        <DataTemplate x:Key="LanguagesDataTemplate">
+            <TextBlock Text="{Binding Path=NativeName}" />
+        </DataTemplate>
+    </Window.Resources>
+
     <Grid>
-        <Label Name="listPeopleHeader" Content="Kontakte:" Margin="30,10,0,0" FontSize="20" FontFamily="Microsoft Sans Serif" TabIndex="10" />
+        <Label Name="listPeopleHeader" Content="{Binding Path=ListName, Source={StaticResource Resources}}" Margin="30,10,0,0" FontSize="20" FontFamily="Microsoft Sans Serif" TabIndex="10" />
         <Image Source="pack://application:,,,/Resources/search.png" Width="30" Height="30" Margin="0,20,240,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
         <TextBox TabIndex="9" Height="30" Width="200" Margin="0,20,0,0" FontSize="20" TextWrapping="Wrap" Name="txtFilter" TextChanged="TxtFilter_TextChanged" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+
+        <ComboBox Width="Auto" Height="Auto" Margin="0,20,40,0" FontSize="20" IsSynchronizedWithCurrentItem="True" Name="language_changer" ItemsSource="{Binding Path=SupportedCultures, Mode=OneWay, Source={StaticResource CultureResourcesDS}}" ItemTemplate="{StaticResource LanguagesDataTemplate}" BorderThickness="0" Background="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Top" />
 
         <ListView Name="personListView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="30,70,30,150"  SelectionMode="Extended" PreviewMouseLeftButtonUp="PersonListView_MouseLeftButtonDown" SelectionChanged="PersonListView_SelectionChanged"  SizeChanged="PersonListView_SizeChanged" Loaded="ListView_Loaded" MouseDoubleClick="PersonListView_MouseDoubleClick">
             <ListView.Resources>
@@ -22,19 +31,19 @@
                 <GridView x:Name="personGridView">
                     <GridView.Columns>
                         <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
-                        <GridViewColumn Header="Vorname" Width="Auto" DisplayMemberBinding="{Binding VorName}"/>
-                        <GridViewColumn Header="Nachname" Width="Auto" DisplayMemberBinding="{Binding NachName}"/>
-                        <GridViewColumn Header="Straße" Width="Auto" DisplayMemberBinding="{Binding Straße}"/>
-                        <GridViewColumn Header="Hausnummer" Width="Auto" DisplayMemberBinding="{Binding Hausnummer}"/>
-                        <GridViewColumn Header="Postleitzahl" Width="Auto" DisplayMemberBinding="{Binding Postleitzahl}"/>
-                        <GridViewColumn Header="Ort" Width="Auto" DisplayMemberBinding="{Binding Ort}"/>
-                        <GridViewColumn Header="Lieblingslehrer" Width="Auto" DisplayMemberBinding="{Binding LieblingsLehrer}"/>
-                        <GridViewColumn Header="Lieblingsdino" Width="Auto" DisplayMemberBinding="{Binding LieblingsDino}"/>
+                        <GridViewColumn Header="{Binding Path=FirstName, Source={StaticResource Resources}}" Width="Auto" DisplayMemberBinding="{Binding VorName}"/>
+                        <GridViewColumn Header="{Binding Path=LastName, Source={StaticResource Resources}}" Width="Auto" DisplayMemberBinding="{Binding NachName}"/>
+                        <GridViewColumn Header="{Binding Path=Street, Source={StaticResource Resources}}" Width="Auto" DisplayMemberBinding="{Binding Straße}"/>
+                        <GridViewColumn Header="{Binding Path=HouseNumber, Source={StaticResource Resources}}" Width="Auto" DisplayMemberBinding="{Binding Hausnummer}"/>
+                        <GridViewColumn Header="{Binding Path=ZipCode, Source={StaticResource Resources}}" Width="Auto" DisplayMemberBinding="{Binding Postleitzahl}"/>
+                        <GridViewColumn Header="{Binding Path=City, Source={StaticResource Resources}}" Width="Auto" DisplayMemberBinding="{Binding Ort}"/>
+                        <GridViewColumn Header="{Binding Path=FavouriteTeacher, Source={StaticResource Resources}}" Width="Auto" DisplayMemberBinding="{Binding LieblingsLehrer}"/>
+                        <GridViewColumn Header="{Binding Path=FavouriteDino, Source={StaticResource Resources}}" Width="Auto" DisplayMemberBinding="{Binding LieblingsDino}"/>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Name="addPersonButton" Content="Hinzufügen" Grid.Column="1" TabIndex="17" Click="addPersonButton_Click" Width="150" Height="50" Margin="30,0,0,40" HorizontalAlignment="Left" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button Name="PersonLöschen" Content="Löschen" Grid.Column="1" TabIndex="18" Click="PersonLöschen_Click" Width="150" Height="50" Margin="210,0,0,40" HorizontalAlignment="Left" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Name="addPersonButton" Content="{Binding Path=Add, Source={StaticResource Resources}}" Grid.Column="1" TabIndex="17" Click="addPersonButton_Click" Width="150" Height="50" Margin="30,0,0,40" HorizontalAlignment="Left" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Name="PersonLöschen" Content="{Binding Path=Delete, Source={StaticResource Resources}}" Grid.Column="1" TabIndex="18" Click="PersonLöschen_Click" Width="150" Height="50" Margin="210,0,0,40" HorizontalAlignment="Left" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     </Grid>
 </Window>

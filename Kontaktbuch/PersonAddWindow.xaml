@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kontaktbuch"
         mc:Ignorable="d"
-        Title="Dateneingabe" Height="750" Width="300">
+        Title="{Binding Path=DataInput, Source={StaticResource Resources}}" Height="750" Width="300">
     <Grid>
-        <Label Name="addPersonHeader" Content="Dateneingabe:" Margin="30,10,0,0" FontSize="20" FontFamily="Microsoft Sans Serif" TabIndex="9" />
+        <Label Name="addPersonHeader" Content="{Binding Path=DataInput, Source={StaticResource Resources}}" Margin="30,10,0,0" FontSize="20" FontFamily="Microsoft Sans Serif" TabIndex="9" />
 
-        <Label Name="vorNameLabel" Content="Vorname:" Margin="30,50,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Label Name="nachNameLabel" Content="Nachname:" Margin="30,120,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Label Name="straßeLabel" Content="Straße:" Margin="30,190,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Label Name="HausnummerLabel" Content="Hausnummer:" Margin="30,260,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="4" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Label Name="postleitzahlLabel" Content="Postleitzahl:" Margin="30,330,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="5" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Label Name="ortLabel" Content="Ort:" Margin="30,400,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="6" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Label Name="lieblingsLehrerLabel" Content="Lieblingslehrer:" Margin="30,470,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="7" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Label Name="lieblingsDinoLabel" Content="Lieblingsdino:" Margin="30,540,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="8" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="vorNameLabel" Content="{Binding Path=FirstName, Source={StaticResource Resources}}" Margin="30,50,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="nachNameLabel" Content="{Binding Path=LastName, Source={StaticResource Resources}}" Margin="30,120,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="straßeLabel" Content="{Binding Path=Street, Source={StaticResource Resources}}" Margin="30,190,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="3" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="HausnummerLabel" Content="{Binding Path=HouseNumber, Source={StaticResource Resources}}" Margin="30,260,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="4" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="postleitzahlLabel" Content="{Binding Path=ZipCode, Source={StaticResource Resources}}" Margin="30,330,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="5" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="ortLabel" Content="{Binding Path=City, Source={StaticResource Resources}}" Margin="30,400,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="6" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="lieblingsLehrerLabel" Content="{Binding Path=FavouriteTeacher, Source={StaticResource Resources}}" Margin="30,470,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="7" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="lieblingsDinoLabel" Content="{Binding Path=FavouriteDino, Source={StaticResource Resources}}" Margin="30,540,0,0" FontSize="15" FontFamily="Microsoft Sans Serif" TabIndex="8" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
         <TextBox Name="vorNameText" Margin="30,75,0,0" TabIndex="9" Height="30" Width="200" FontSize="20" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" ></TextBox>
         <TextBox Name="nachNameText" Margin="30,145,0,0" TabIndex="10" Height="30" Width="200" FontSize="20" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" ></TextBox>
@@ -27,6 +27,6 @@
         <TextBox Name="lieblingsLehrerText" Margin="30,495,0,0" TabIndex="15" Height="30" Width="200" FontSize="20" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" ></TextBox>
         <TextBox Name="lieblingsDinoText" Margin="30,565,0,0" TabIndex="16" Height="30" Width="200" FontSize="20" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" ></TextBox>
 
-        <Button Name="addPersonButton" Content="Hinzufügen" Grid.Column="1" TabIndex="17" Click="addPersonButton_Click" Width="150" Height="50" Margin="30,620,0,40" HorizontalAlignment="Left" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Name="addPersonButton" Content="{Binding Path=Add, Source={StaticResource Resources}}" Grid.Column="1" TabIndex="17" Click="addPersonButton_Click" Width="150" Height="50" Margin="30,620,0,40" HorizontalAlignment="Left" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     </Grid>
 </Window>
