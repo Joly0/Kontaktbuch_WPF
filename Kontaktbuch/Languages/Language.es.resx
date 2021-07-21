@@ -162,4 +162,10 @@
   <data name="ConfirmationTitle" xml:space="preserve">
     <value>Confirmación</value>
   </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
 </root>

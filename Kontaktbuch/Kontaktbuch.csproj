@@ -75,6 +75,11 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <CustomToolNamespace>Kontaktbuch.Languages</CustomToolNamespace>
     </EmbeddedResource>
+    <EmbeddedResource Update="Languages\Language.it.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CustomToolNamespace>Kontaktbuch.Languages</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Update="Languages\Language.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

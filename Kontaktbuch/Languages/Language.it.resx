@@ -118,54 +118,54 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>Ajouter</value>
-  </data>
-  <data name="City" xml:space="preserve">
-    <value>Ville</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
-  <data name="FavouriteDino" xml:space="preserve">
-    <value>Dino préféré</value>
-  </data>
-  <data name="FavouriteTeacher" xml:space="preserve">
-    <value>Professeur préféré</value>
-  </data>
-  <data name="FirstName" xml:space="preserve">
-    <value>Prénom</value>
-  </data>
-  <data name="HouseNumber" xml:space="preserve">
-    <value>Numéro de maison</value>
-  </data>
-  <data name="LastName" xml:space="preserve">
-    <value>Nom de famille</value>
+    <value>Aggiungi</value>
   </data>
   <data name="ListName" xml:space="preserve">
-    <value>Contacts :</value>
+    <value>Contatti:</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Nome</value>
   </data>
   <data name="Street" xml:space="preserve">
-    <value>Rue</value>
+    <value>Via</value>
+  </data>
+  <data name="HouseNumber" xml:space="preserve">
+    <value>Housenumber</value>
   </data>
   <data name="ZipCode" xml:space="preserve">
-    <value>Code postal</value>
+    <value>Codice postale</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Città</value>
+  </data>
+  <data name="FavouriteTeacher" xml:space="preserve">
+    <value>Insegnante preferito</value>
+  </data>
+  <data name="FavouriteDino" xml:space="preserve">
+    <value>Dino preferito</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Cancellare</value>
   </data>
   <data name="DataInput" xml:space="preserve">
-    <value>Saisie de données</value>
+    <value>Ingresso dati</value>
   </data>
   <data name="MainTitle" xml:space="preserve">
-    <value>Livre de contact</value>
+    <value>Contactbook</value>
   </data>
   <data name="DeleteConfirmation" xml:space="preserve">
-    <value>Êtes-vous sûr de vouloir supprimer ces entrées ?</value>
+    <value>Sei sicuro di voler cancellare quelle voci?</value>
   </data>
   <data name="ConfirmationTitle" xml:space="preserve">
-    <value>Confirmation</value>
+    <value>Conferma</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>Oui</value>
+    <value>Sì</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>Non</value>
+    <value>No</value>
   </data>
 </root>
