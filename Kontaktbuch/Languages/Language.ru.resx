@@ -168,4 +168,7 @@
   <data name="No" xml:space="preserve">
     <value>Нет</value>
   </data>
+  <data name="Change" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
 </root>

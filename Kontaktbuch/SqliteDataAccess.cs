@@ -12,32 +12,23 @@ namespace Kontaktbuch
     {
         public static List<PersonModel> LoadPeople()
         {
-            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                var output = cnn.Query<PersonModel>("select * from Person", new DynamicParameters());
-                return output.ToList();
-            }
+            using IDbConnection cnn = new SQLiteConnection(LoadConnectionString());
+            IEnumerable<PersonModel> output = cnn.Query<PersonModel>("select * from Person", new DynamicParameters());
+            return output.ToList();
         }
 
         public static void SavePerson(PersonModel person)
         {
             IDbConnection cnn = new SQLiteConnection(LoadConnectionString());
-            if (person.Id != -1)
-            {
-                cnn.ExecuteAsync("insert or replace into Person (Id, VorName, NachName, Straße, Hausnummer, Postleitzahl, Ort, LieblingsLehrer, LieblingsDino) values (@Id, @VorName, @NachName, @Straße, @Hausnummer, @Postleitzahl, @Ort, @LieblingsLehrer, @LieblingsDino)", person);
-            }
-            else
-            {
-                cnn.ExecuteAsync("insert or replace into Person (VorName, NachName, Straße, Hausnummer, Postleitzahl, Ort, LieblingsLehrer, LieblingsDino) values (@VorName, @NachName, @Straße, @Hausnummer, @Postleitzahl, @Ort, @LieblingsLehrer, @LieblingsDino)", person);
-            }
+            _ = person.Id != -1
+                ? cnn.ExecuteAsync("insert or replace into Person (Id, VorName, NachName, Straße, Hausnummer, Postleitzahl, Ort, LieblingsLehrer, LieblingsDino) values (@Id, @VorName, @NachName, @Straße, @Hausnummer, @Postleitzahl, @Ort, @LieblingsLehrer, @LieblingsDino)", person)
+                : cnn.ExecuteAsync("insert or replace into Person (VorName, NachName, Straße, Hausnummer, Postleitzahl, Ort, LieblingsLehrer, LieblingsDino) values (@VorName, @NachName, @Straße, @Hausnummer, @Postleitzahl, @Ort, @LieblingsLehrer, @LieblingsDino)", person);
         }
 
         public static void DeletePerson(PersonModel person)
         {
-            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                cnn.ExecuteAsync("DELETE FROM Person WHERE Id=@Id", person);
-            }
+            using IDbConnection cnn = new SQLiteConnection(LoadConnectionString());
+            _ = cnn.ExecuteAsync("DELETE FROM Person WHERE Id=@Id", person);
         }
 
         private static string LoadConnectionString()

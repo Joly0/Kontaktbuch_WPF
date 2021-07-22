@@ -168,4 +168,7 @@
   <data name="No" xml:space="preserve">
     <value>Non</value>
   </data>
+  <data name="Change" xml:space="preserve">
+    <value>Changement</value>
+  </data>
 </root>

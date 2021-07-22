@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kontaktbuch"
         mc:Ignorable="d"
-        Title="{Binding Path=DataInput, Source={StaticResource Resources}}" Height="750" Width="300">
+        Title="{Binding Path=DataInput, Source={StaticResource Resources}}" Height="750" Width="300" TextOptions.TextFormattingMode="Display" TextOptions.TextRenderingMode="ClearType">
     <Grid>
         <Label Name="addPersonHeader" Content="{Binding Path=DataInput, Source={StaticResource Resources}}" Margin="30,10,0,0" FontSize="20" FontFamily="Microsoft Sans Serif" TabIndex="9" />
 

@@ -1,4 +1,5 @@
-﻿using Kontaktbuch.Languages;
+﻿using Kontaktbuch.Helper;
+using Kontaktbuch.Languages;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,16 +15,15 @@ namespace Kontaktbuch
     public partial class MainWindow : Window
     {
         private List<PersonModel> people = new();
-        private int selectedID = -1;
         private PersonModel currentSelectedPerson;
         public MainWindow()
         {
-            CultureInfo default_culture = new CultureInfo(CultureInfo.InstalledUICulture.TwoLetterISOLanguageName);
+            CultureInfo default_culture = new(CultureInfo.InstalledUICulture.TwoLetterISOLanguageName);
             CultureResources.ChangeCulture(default_culture);
 
             InitializeComponent();
 
-            this.language_changer.SelectionChanged += new SelectionChangedEventHandler(this.language_changer_SelectionChanged);
+            language_changer.SelectionChanged += new SelectionChangedEventHandler(Language_changer_SelectionChanged);
             language_changer.SelectedItem = default_culture;
         }
 
@@ -42,10 +42,10 @@ namespace Kontaktbuch
             Leeren();
         }
 
-        private void addPersonButton_Click(object sender, EventArgs e)
+        private void AddPersonButton_Click(object sender, EventArgs e)
         {
             PersonAddWindow personAddWindow = new();
-            personAddWindow.ShowDialog();
+            _ = personAddWindow.ShowDialog();
 
             LoadPeopleList();
         }
@@ -54,7 +54,6 @@ namespace Kontaktbuch
         {
             foreach (PersonModel p in personListView.SelectedItems)
             {
-                selectedID = p.Id;
                 currentSelectedPerson = p;
             }
         }
@@ -64,7 +63,6 @@ namespace Kontaktbuch
             personListView.SelectedItem = null;
 
             personListView.UnselectAll();
-            selectedID = -1;
             currentSelectedPerson = null;
         }
 
@@ -111,7 +109,7 @@ namespace Kontaktbuch
             }
         }
 
-        private List<PersonModel> FilterPeople(PersonModel person, List<PersonModel> filteredPeopleList)
+        private static List<PersonModel> FilterPeople(PersonModel person, List<PersonModel> filteredPeopleList)
         {
             if (!filteredPeopleList.Contains(person))
             {
@@ -123,9 +121,11 @@ namespace Kontaktbuch
         private void PersonListView_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             HitTestResult r = VisualTreeHelper.HitTest(this, e.GetPosition(this));
-            if (r.VisualHit.GetType() == typeof(ScrollViewer))
+            if (r != null && r.VisualHit.GetType() == typeof(ScrollViewer))
             {
+                GridViewColumnHeader headerClicked = personGridView.Columns[0].Header as GridViewColumnHeader;
                 Leeren();
+                GridViewSort.ApplySort(personListView.Items, null, personListView, headerClicked);
             }
         }
 
@@ -150,16 +150,16 @@ namespace Kontaktbuch
             HitTestResult r = VisualTreeHelper.HitTest(this, e.GetPosition(this));
             if (r.VisualHit.GetType() != typeof(ScrollViewer))
             {
-                if(currentSelectedPerson != null)
+                if (currentSelectedPerson != null)
                 {
-                    PersonAddWindow personAddWindow = new PersonAddWindow(currentSelectedPerson);
-                    personAddWindow.ShowDialog();
+                    PersonAddWindow personAddWindow = new(currentSelectedPerson);
+                    _ = personAddWindow.ShowDialog();
                     LoadPeopleList();
                 }
             }
         }
 
-        private void language_changer_SelectionChanged(object sender, RoutedEventArgs e)
+        private void Language_changer_SelectionChanged(object sender, RoutedEventArgs e)
         {
             System.Threading.Thread.CurrentThread.CurrentUICulture = language_changer.SelectedItem as CultureInfo;
 
